@@ -1,11 +1,10 @@
-# uses rss
-# http://www.torrentdownloads.me/rss.xml?type=search&search=Underground+S01E04
-
 import urllib.request, urllib.parse, urllib.error
 from time import mktime
 from datetime import datetime
 from duvet.objects import Torrent
 import feedparser
+
+# http://www.torrentdownloads.me/rss.xml?type=search&search=Underground+S01E04
 
 
 class Provider():

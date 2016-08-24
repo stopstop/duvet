@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 
 from duvet.objects import Torrent
 
+
 class Provider(object):
     provider_urls = [
         'http://thepiratebay.se',

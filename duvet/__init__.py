@@ -1,5 +1,5 @@
 import concurrent.futures
-import urllib
+from urllib.parse import urlparse, parse_qs
 from uuid import uuid4
 import logging
 
@@ -84,8 +84,8 @@ class Duvet(object):
         # Remove duplicates based on the magnet hash
         hashes = []
         for i, torrent in enumerate(torrents):
-            o = urllib.parse.urlparse(torrent.magnet)
-            torrent_hash = urllib.parse.parse_qs(o.query)['xt']
+            o = urlparse(torrent.magnet)
+            torrent_hash = parse_qs(o.query)['xt']
             torrent_hash = torrent_hash[0].split(':')[-1]
             if torrent_hash in hashes:
                 del torrents[i]
