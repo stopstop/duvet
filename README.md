@@ -23,10 +23,13 @@ installable/upgradable solution that works for everyone.
 # CLI Usage with Blanket
 <pre>
 $ python3 blanket.py --search 'Game of Thrones' --season=5 --episode=9
+... output ... 
 
 $ python3 blanket.py --search 'UFC 202' --min-seeders=2000
+... output ... 
 
 $ python3 blanket.py --search 'Something Obscure' --show=15
+... output ... 
 
 $ python3 blanket.py --help
 Usage: blanket.py [OPTIONS]
@@ -121,9 +124,9 @@ that we can get parity.
 * Duvet uses various pip installable packages (```pip3 install -r 
 requirements.txt```)
 * You can pip install the repo locally (It's not on pypi yet) by 
-running ```pip install .``` or ```pip install -e .``` install the 
+running ```pip install .``` or ```pip install -e .``` to install the 
 package with a symlink, so that changes to the source files will be 
-immediately available to other users of the package on our system: 
+immediately available to other users of the package on our system. 
 
 
 # Thanks
