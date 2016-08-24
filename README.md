@@ -116,10 +116,16 @@ that we can get parity.
 
 
 # Quickstart
-* Duvet uses Python3. (apt-get install or brew install python3)
-* Duvet uses various pip installable packages (pip3 install -r 
-requirements.txt)
-* Duvet logs to search.log
-* Run 'python3 duvet.py'
+* Duvet uses Python3. (```apt-get install python3``` or 
+```brew install python3```)
+* Duvet uses various pip installable packages (```pip3 install -r 
+requirements.txt```)
+* You can pip install the repo locally (It's not on pypi yet) by 
+running ```pip install .``` or ```pip install -e .``` install the 
+package with a symlink, so that changes to the source files will be 
+immediately available to other users of the package on our system: 
 
-Duvet is based on a lot of code from https://github.com/8cylinder/tv-overlord
+
+# Thanks
+Duvet is based on a lot of original code from 
+https://github.com/8cylinder/tv-overlord
