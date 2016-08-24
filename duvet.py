@@ -20,7 +20,7 @@ class Duvet(object):
     def __init__(self):
         self.engines = engines
         self.logger = logging.Logger('duvet')
-        fh = logging.FileHandler('duvet.log')
+        fh = logging.FileHandler('search.log')
         self.logger.addHandler(fh)
         self.logger.setLevel(logging.INFO)
 
@@ -98,10 +98,11 @@ class Duvet(object):
 if __name__ == '__main__':
     duvet = Duvet()
     duvet.logger.debug('Testing Duvet')
+
     results = duvet.search('UFC', min_seeders=3000)
     for r in results:
         print(r)
 
-    # results = duvet.search('Stranger Things', season=1, episode=3, min_seeders=100)
-    # for r in results:
-    #     print(r)
+    results = duvet.search('Stranger Things', season=1, episode=3, min_seeders=100)
+    for r in results:
+        print(r)
