@@ -1,0 +1,11 @@
+beautifulsoup4==4.5.1
+bs4==0.0.1
+dateparser==0.4.0
+feedparser==5.2.1
+jdatetime==1.8.1
+python-dateutil==2.5.3
+pytz==2016.6.1
+regex==2016.7.21
+requests==2.11.1
+ruamel.yaml==0.12.5
+umalqurra==0.2
