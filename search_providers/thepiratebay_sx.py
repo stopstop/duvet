@@ -85,10 +85,17 @@ class Provider(object):
                             details = tds[0].find('font').contents[0].split(', ')
 
                             # hackity hack to fix TPB's use of 'Y-day'
+
+
                             date_string = details[0].replace('Uploaded ', '')
+
+                            print(date_string)
                             if 'Y-day' in date_string:
                                 yesterday = datetime.now() - timedelta(days=1)
                                 date_string = date_string.replace('Y-day', yesterday.strftime('%d %B %Y'))
+
+                            if 'Today' in date_string:
+                                date_string = date_string.replace('Today', datetime.now().strftime('%d %B %Y'))
 
                             torrent.date = parse(date_string)
                             torrent.size = self.to_bytes(details[1])
