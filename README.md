@@ -1,4 +1,12 @@
 # Duvet - The Missing Torrent Site Search Aggregator
+The idea behind Duvet is simple. There are a bunch of applications all
+recreating the wheel building their own search engines for various 
+torrent sites. As those sites change everyone needs to update their
+code in hundreds of places. We're all reinventing the wheel repeatedly.
+
+*We need to stop*. Let's work together and build a pip 
+installable/updatable solution that works for everyone.
+
 
 ## Sites Searched
 * Bitsnoop
@@ -8,7 +16,8 @@
 * 13376
 * RARBG
 * The Pirate Bay
-* Torrent Downloads (Disabled because dodgy data)
+* Torrent Downloads (disabled because dodgy data)
+
 
 
 # Usage
@@ -59,5 +68,23 @@ Stranger.Things.S01E03.720p.WEBRip.x264-SKGTV[PRiME]           Size: 1.34 GB    
 Stranger.Things.S01E03.720p.WEBRip.x264-SKGTV[rartv]           Size: 1.34 GB        Seeders: 190      Age: 38 days   RBG
 </pre>
 
+
+# TODO: 
+* Unit Tests
+* Build a simple CLI using click. (eg. "sheet 'stranger things' 
+--season=2 --episode=4")
+* Tests to validate that the various searches are working. (perhaps
+something that uses tvdb to verify that we have results for things
+yesterday, today, last week etc. 
+* Better tools for discovering non-episodic things (documentaries etc).
+* Elegant exception handling. Current approach is "fail brutally so we 
+know what to fix".
+
+# Quickstart
+* Duvet uses Python3. (apt-get install or brew install python3)
+* Duvet uses various pip installable packages (pip3 install -r 
+requirements.txt)
+* Duvet logs to search.log
+* Run 'python3 duvet.py'
 
 Duvet is based on a lot of code from https://github.com/8cylinder/tv-overlord
