@@ -1,11 +1,13 @@
 # Duvet - The Missing Torrent Site Search Aggregator
 The idea behind Duvet is simple. There are a bunch of applications all
 recreating the wheel building their own search engines for various 
-torrent sites. As those sites change everyone needs to update their
-code in hundreds of places. We're all reinventing the wheel repeatedly.
+torrent sites. When those sites change something that breaks the parsing
+everyone needs to update their code in hundreds of places. 
+
+We're all reinventing the wheel repeatedly.
 
 *We need to stop*. Let's work together and build a pip 
-installable/updatable solution that works for everyone.
+installable/upgradable solution that works for everyone.
 
 
 ## Sites Searched
@@ -71,7 +73,10 @@ Stranger.Things.S01E03.720p.WEBRip.x264-SKGTV[rartv]           Size: 1.34 GB    
 
 # TODO: 
 * Unit Tests
-* Build a simple CLI using click. (eg. "sheet 'stranger things' 
+* Move everything over the the Requests library.
+* Abstract the HTTP calls into a shared method.
+* Optionally implement the Retrying library.
+* Build a simple CLI using click. (eg. "sheet.py 'stranger things' 
 --season=2 --episode=4")
 * Tests to validate that the various searches are working. (perhaps
 something that uses tvdb to verify that we have results for things
