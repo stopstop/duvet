@@ -3,14 +3,14 @@ import urllib
 from uuid import uuid4
 import logging
 
-from search_providers import extratorrent
-from search_providers import bitsnoop
-from search_providers import thepiratebay_sx
-from search_providers import onethreethreesevenx_to
-from search_providers import rarbg_to
-from search_providers import eztv_ag
-from search_providers import btstorr_cc
-# from search_providers import torrentdownloads_me
+from duvet.search_providers import extratorrent
+from duvet.search_providers import bitsnoop
+from duvet.search_providers import thepiratebay_sx
+from duvet.search_providers import onethreethreesevenx_to
+from duvet.search_providers import rarbg_to
+from duvet.search_providers import eztv_ag
+from duvet.search_providers import btstorr_cc
+# from duvet.search_providers import torrentdownloads_me  (Disabled because it seems dodgy?)
 
 engines = [extratorrent, bitsnoop, thepiratebay_sx, onethreethreesevenx_to, rarbg_to, eztv_ag, btstorr_cc]
 
@@ -93,16 +93,3 @@ class Duvet(object):
                 hashes.append(torrent_hash)
 
         return torrents
-
-
-if __name__ == '__main__':
-    duvet = Duvet()
-    duvet.logger.debug('Testing Duvet')
-
-    results = duvet.search('UFC', min_seeders=3000)
-    for r in results:
-        print(r)
-
-    results = duvet.search('Stranger Things', season=1, episode=3, min_seeders=100)
-    for r in results:
-        print(r)

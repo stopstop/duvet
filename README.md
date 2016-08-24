@@ -20,12 +20,32 @@ installable/upgradable solution that works for everyone.
 * The Pirate Bay
 * Torrent Downloads (disabled because dodgy data)
 
+# CLI Usage with Blanket
+<pre>
+$ python3 blanket.py --search 'Game of Thrones' --season=5 --episode=9
 
+$ python3 blanket.py --search 'UFC 202' --min-seeders=2000
 
-# Usage
+$ python3 blanket.py --search 'Something Obscure' --show=15
+
+$ python3 blanket.py --help
+Usage: blanket.py [OPTIONS]
+
+Options:
+  --search TEXT          What would you like to search for?
+  --season INTEGER       Season Number.
+  --episode INTEGER      Episode Number.
+  --min-seeders INTEGER  Minimum number of seeders.
+  --show INTEGER         How many results to show.
+  --help                 Show this message and exit.
+</pre>
+
+# Code Usage
 ## Searching for a specific string
 <pre>
-results = duvet.search('UFC 202', min_seeders=1000)
+import duvet
+d = duvet.Duvet()
+results = d.search('UFC 202', min_seeders=1000)
 for r in results:
     print(r)
 </pre>
@@ -53,6 +73,8 @@ UFC 201 Prelims HDTV x264-Ebi [TJET]                           Size: 1.03 GB    
 
 ## Searching for an episode
 <pre>
+import duvet
+d = duvet.Duvet()
 results = duvet.search('Stranger Things', season=1, episode=3, min_seeders=100)
 for r in results:
     print(r)
@@ -72,12 +94,10 @@ Stranger.Things.S01E03.720p.WEBRip.x264-SKGTV[rartv]           Size: 1.34 GB    
 
 
 # TODO: 
-* Unit Tests
+* Unit Tests.
 * Move everything over the the Requests library.
 * Abstract the HTTP calls into a shared method.
 * Optionally implement the Retrying library.
-* Build a simple CLI using click. (eg. "sheet.py 'stranger things' 
---season=2 --episode=4")
 * Tests to validate that the various searches are working. (perhaps
 something that uses tvdb to verify that we have results for things
 yesterday, today, last week etc. 
@@ -91,6 +111,8 @@ duplicates removed, 12 results with too few seeders, query took
 * Start tackling the list of providers from 
 https://github.com/SickRage/SickRage/tree/master/sickbeard/providers so
 that we can get parity.
+* Remove onethreethreesevenx_to's reliance on the very slow to load
+"dateparser".
 
 
 # Quickstart
