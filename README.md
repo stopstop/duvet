@@ -1,6 +1,15 @@
 # Duvet - The Missing Torrent Site Search Aggregator
 
-Based on a lot of code from https://github.com/8cylinder/tv-overlord
+## Sites Searched
+* Bitsnoop
+* Bit Torrent Scene
+* Extratorrent
+* EZTV
+* 13376
+* RARBG
+* The Pirate Bay
+* Torrent Downloads (Disabled because dodgy data)
+
 
 # Usage
 ## Searching for a specific string
@@ -50,3 +59,5 @@ Stranger.Things.S01E03.720p.WEBRip.x264-SKGTV[PRiME]           Size: 1.34 GB    
 Stranger.Things.S01E03.720p.WEBRip.x264-SKGTV[rartv]           Size: 1.34 GB        Seeders: 190      Age: 38 days   RBG
 </pre>
 
+
+Duvet is based on a lot of code from https://github.com/8cylinder/tv-overlord
