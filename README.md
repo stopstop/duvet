@@ -88,6 +88,9 @@ know what to fix".
 searched, talked to 12 domains, 8 responded, 42 results found, 38 
 duplicates removed, 12 results with too few seeders, query took 
 3.2 seconds.")
+* Start tackling the list of providers from 
+https://github.com/SickRage/SickRage/tree/master/sickbeard/providers so
+that we can get parity.
 
 
 # Quickstart
