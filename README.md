@@ -1,8 +1,8 @@
 # Duvet - The Missing Torrent Site Search Aggregator
 The idea behind Duvet is simple. There are a bunch of applications all
 recreating the wheel building their own search engines for various 
-torrent sites. When those sites change something that breaks the parsing
-everyone needs to update their code in hundreds of places. 
+torrent sites. When those sites change something that breaks the 
+parsing, everyone needs to update their code in hundreds of places. 
 
 We're all reinventing the wheel repeatedly.
 

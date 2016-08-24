@@ -10,7 +10,6 @@ class Provider(object):
     name = 'ExtraTorrent'
     shortname = 'EXT'
     provider_urls = [
-        'http://fsoajdfoiajsfoasijdoasif.com'
         'http://extratorrent.cc',
         'http://etmirror.com',
         'http://etproxy.com',
