@@ -116,6 +116,7 @@ https://github.com/SickRage/SickRage/tree/master/sickbeard/providers so
 that we can get parity.
 * Remove onethreethreesevenx_to's reliance on the very slow to load
 "dateparser".
+* Fix up setup.py so that it installs requirements.txt etc.
 
 
 # Quickstart
