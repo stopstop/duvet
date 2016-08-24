@@ -9,6 +9,8 @@ We're all reinventing the wheel repeatedly.
 *We need to stop*. Let's work together and build a pip 
 installable/upgradable solution that works for everyone.
 
+Duvet runs on multiple threads at the same time so queries to lots of 
+sources are fast.
 
 ## Sites Searched
 * Bitsnoop
@@ -100,6 +102,7 @@ Stranger.Things.S01E03.720p.WEBRip.x264-SKGTV[rartv]           Size: 1.34 GB    
 * Unit Tests.
 * Move everything over the the Requests library.
 * Abstract the HTTP calls into a shared method.
+* Handle timeouts properly, allow configurable timeouts.
 * Optionally implement the Retrying library.
 * Tests to validate that the various searches are working. (perhaps
 something that uses tvdb to verify that we have results for things
