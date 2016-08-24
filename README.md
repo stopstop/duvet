@@ -84,6 +84,11 @@ yesterday, today, last week etc.
 * Better tools for discovering non-episodic things (documentaries etc).
 * Elegant exception handling. Current approach is "fail brutally so we 
 know what to fix".
+* Timing and meta data on the search response. (eg. "9 websites 
+searched, talked to 12 domains, 8 responded, 42 results found, 38 
+duplicates removed, 12 results with too few seeders, query took 
+3.2 seconds.")
+
 
 # Quickstart
 * Duvet uses Python3. (apt-get install or brew install python3)
