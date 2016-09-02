@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import uuid
 
 class Torrent(object):
     def __init__(self):
@@ -12,7 +12,10 @@ class Torrent(object):
         self.size = None
         self.date = None
         self.details = None
+        self.uuid = uuid.uuid4().hex
+        self._remove = False
 
+    @property
     def human_age(self):
         if self.date:
             age = datetime.now() - self.date
@@ -20,6 +23,7 @@ class Torrent(object):
         else:
             return "Unknown"
 
+    @property
     def human_size(self):
         if self.size > 1000000000:
             return "%.2f GB" % (self.size / 1000000000)
@@ -30,9 +34,13 @@ class Torrent(object):
         else:
             return "%s KB" % (self.size/1000)
 
+    @property
+    def html_friendly_title(self):
+        return self.title.replace('.', '.&#8203;').replace('[', '&#8203;[').replace(']', ']&#8203;')
+
     def __unicode__(self):
-        return "%s   Size: %s   Seeders: %s   Age: %s   %s" % (self.title.ljust(60)[0:60], str(self.human_size()).ljust(12),
-                                                               str(self.seeders).ljust(6), self.human_age(),
+        return "%s   Size: %s   Seeders: %s   Age: %s   %s" % (self.title.ljust(60)[0:60], str(self.human_size).ljust(12),
+                                                               str(self.seeders).ljust(6), self.human_age,
                                                                self.tracker)
 
     def __str__(self):

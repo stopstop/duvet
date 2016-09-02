@@ -5,7 +5,6 @@ import feedparser
 
 from duvet.objects import Torrent
 
-
 class Provider(object):
     name = 'ExtraTorrent'
     shortname = 'EXT'

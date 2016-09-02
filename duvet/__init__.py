@@ -23,6 +23,8 @@ class Duvet(object):
         fh = logging.FileHandler('search.log')
         self.logger.addHandler(fh)
         self.logger.setLevel(logging.INFO)
+        self.torrents = []
+        self.min_seeders = None
 
     def job(self, engine, search_string, season, episode):
         job_id = uuid4().hex
@@ -30,10 +32,20 @@ class Duvet(object):
         search = engine.Provider(self.logger, job_id=job_id)
         search_results = search.search(search_string, season, episode)
         self.logger.info('%s[%s] returned "%s results"' % (job_id, engine.Provider.shortname, len(search_results)))
-        return search_results
+
+        # print("Response from %s" % engine.Provider.name)
+
+        if self.min_seeders:
+            search_results[:] = [x for x in search_results if not x.seeders < self.min_seeders]
+
+        self.torrents.extend(search_results)
+        self._sort_torrents()
 
     def search(self, search_string, season=None, episode=None, min_seeders=None, remove_duplicates=True):
-        self.logger.info('Initiating Duvet Search Object')
+        self.logger.info('Searching for "%s"  SE:%s   EP:%s  Min Seeds:%s  Remove Dupes:%s' %
+                         (search_string, season, episode, min_seeders, remove_duplicates))
+
+        self.min_seeders = min_seeders
         search_results = []
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
@@ -47,49 +59,42 @@ class Duvet(object):
                 if future.result():
                     search_results.extend(future.result())
 
-        search_results = self._sort_torrents(search_results)
-
+        # Only remove dupes once they're all in so that we keep the dupes with the highest seeders
         if remove_duplicates:
-            search_results = self._remove_duplicates(search_results)
+            self._remove_duplicates()
 
-        if min_seeders and isinstance(min_seeders, int):
-            search_results = self._remove_low_seeders(search_results, min_seeders)
+        return self.torrents
 
-        return search_results
+    def _sort_torrents(self):
+        self.torrents.sort(key=lambda x: int(x.seeders), reverse=True)
 
-    @staticmethod
-    def _sort_torrents(torrents):
-        torrents.sort(key=lambda x: int(x.seeders), reverse=True)
-        return torrents
-
-    @staticmethod
-    def _remove_low_seeders(torrents, min_seeders):
-        out = []
-        for i, torrent in enumerate(torrents):
-            if torrent.seeders > min_seeders:
-                out.append(torrent)
-        return out
-
-    @staticmethod
-    def _remove_duplicates(torrents):
+    def _remove_duplicates(self):
         # Remove duplicates since different sites might have the same torrent
         titles = []
-        for i, torrent in enumerate(torrents):
-            title = torrent.title
+        for x in self.torrents:
+            title = x.title
             if title in titles:
-                del torrents[i]
+                self.logger.info("Deleting Dupe %s" % title)
+                x._remove = True
             else:
                 titles.append(title)
 
         # Remove duplicates based on the magnet hash
         hashes = []
-        for i, torrent in enumerate(torrents):
-            o = urlparse(torrent.magnet)
+        for x in self.torrents:
+            o = urlparse(x.magnet)
             torrent_hash = parse_qs(o.query)['xt']
             torrent_hash = torrent_hash[0].split(':')[-1]
             if torrent_hash in hashes:
-                del torrents[i]
+                self.logger.info("Deleting Dupe %s" % torrent_hash)
+                x._remove = True
             else:
                 hashes.append(torrent_hash)
 
-        return torrents
+        self.torrents[:] = [x for x in self.torrents if not x._remove]
+
+if __name__ == '__main__':
+    d = Duvet()
+    r = d.search(search_string="Stranger Things", season=1, episode=4, min_seeders=30)
+    for t in r:
+        print(str(t))

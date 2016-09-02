@@ -120,6 +120,7 @@ that we can get parity.
 * Remove onethreethreesevenx_to's reliance on the very slow to load
 "dateparser".
 * Fix up setup.py so that it installs requirements.txt etc.
+# Add torrent detail url to Torrent object.
 
 
 # Quickstart
