@@ -59,7 +59,7 @@ class Duvet(object):
             self.futures[engine] = pool.submit(self.job, engine, search_string, season, episode)
 
         if wait_and_return_results:
-            while not d.finished:
+            while not self.finished:
                 time.sleep(0.1)
 
             self.remove_duplicates()
