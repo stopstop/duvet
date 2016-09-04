@@ -25,14 +25,15 @@ class Torrent(object):
 
     @property
     def human_size(self):
-        if self.size > 1000000000:
-            return "%.2f GB" % (self.size / 1000000000)
+        if self.size:
+            if self.size > 1000000000:
+                return "%.2f GB" % (self.size / 1000000000)
 
-        elif self.size > 1000000:
-            return "%.2f MB" % (self.size/1000000)
+            elif self.size > 1000000:
+                return "%.2f MB" % (self.size/1000000)
 
-        else:
-            return "%s KB" % (self.size/1000)
+            else:
+                return "%s KB" % (self.size/1000)
 
     @property
     def html_friendly_title(self):
